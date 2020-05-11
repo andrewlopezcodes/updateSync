@@ -19,5 +19,8 @@
   "homepage": "https://github.com/andrewlopezcodes/updateSync#readme",
   "bin": {
     "updateSync": "index.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.4.0"
   }
 }
