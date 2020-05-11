@@ -1,6 +1,6 @@
 # updateSync
 
-## A CLI tool to keep track of file updates and restart server
+## A CLI tool to listen for file updates.
 
 ## To Use
 
