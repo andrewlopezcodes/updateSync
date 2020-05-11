@@ -20,7 +20,7 @@ prog
     try {
       await fs.promises.access(name);
     } catch (err) {
-      throw new Error(`ERROR !!!!!! Could not find the file ${name}`);
+      throw new Error(chalk.red(`ERROR !!!!!! Could not find the file ${name}`));
     }
 
     let checkProc;
@@ -28,7 +28,7 @@ prog
       if (checkProc) {
         checkProc.kill();
       }
-      console.log(chalk.red('>>>>>>> STARTING PROCESS <<<<<<<<'));
+      console.log(chalk.green('>>>>>>> STARTING PROCESS <<<<<<<<'));
       checkProc = spawn('node', [name], {
         stdio: 'inherit'
       });
