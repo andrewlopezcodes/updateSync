@@ -4,6 +4,9 @@ const debounce = require('lodash.debounce');
 const chokidar = require('chokidar');
 const prog = require('caporal');
 const fs = require('fs');
+const {
+  spawn
+} = require('child_process');
 
 
 
@@ -22,14 +25,19 @@ prog
 
 
     const start = debounce(() => {
-      console.log('STARTING USERS PROGRAM')
+      spawn('node', [name], {
+        stdio: 'inherit'
+      });
     }, 100);
 
 
-    chokidar.watch('.')
+    chokidar
+      .watch('.', {
+        ignored: /\.git.|node_modules/
+      })
       .on('add', start)
-      .on('change', () => start)
-      .on('unlink', () => start);
+      .on('change', start)
+      .on('unlink', start);
   });
 
 prog.parse(process.argv);
