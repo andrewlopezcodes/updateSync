@@ -8,7 +8,7 @@ const {
   spawn
 } = require('child_process');
 
-
+const chalk = require('chalk');
 
 prog
   .version('0.0.1')
@@ -28,7 +28,7 @@ prog
       if (checkProc) {
         checkProc.kill();
       }
-      console.log('>>>>>>> STARTING PROCESS <<<<<<<<');
+      console.log(chalk.red('>>>>>>> STARTING PROCESS <<<<<<<<'));
       checkProc = spawn('node', [name], {
         stdio: 'inherit'
       });
