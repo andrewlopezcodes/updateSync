@@ -23,9 +23,13 @@ prog
       throw new Error(`ERROR !!!!!! Could not find the file ${name}`);
     }
 
-
+    let checkProc;
     const start = debounce(() => {
-      spawn('node', [name], {
+      if (checkProc) {
+        checkProc.kill();
+      }
+      console.log('>>>>>>> STARTING PROCESS <<<<<<<<');
+      checkProc = spawn('node', [name], {
         stdio: 'inherit'
       });
     }, 100);
